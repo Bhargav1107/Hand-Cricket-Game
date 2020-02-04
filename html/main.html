@@ -1,0 +1,97 @@
+<!-- 
+    Author: Atanu Sarkar
+    03/02/2020
+
+    Date: 03/02/2020
+    version: 1.0.0
+    basic framework of the page completed
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Cricket Game</title>
+</head>
+<body>
+    <!-- HEADER BAR -->
+    <header>
+        <h1>Hand Cricket</h1>
+    </header>
+
+    <!-- STATUS BAR -->
+    <div class="status">
+        <div id="bat" class="status-badge">
+            <img src="../resources/images/cricket-bat.png" alt="Bat image">
+        </div>
+        <div id="ball" class="status-badge">
+            <img src="../resources/images/cricket-ball.png" alt="Ball image">
+        </div>
+        <span class="status-name" id="p1-name">Player 1</span>
+        batting | 
+        <span class="status-name" id="p2-name">Player 2</span>
+        bowling
+    </div>
+
+    <!-- FULL SCORE BOARD and TARGET RUNS, OVERS(to-do later) or FIRST BAT -->
+    <div class="score-board">
+        <!-- TO DO-->
+    </div>
+    
+    <!-- SCORE CARD (Runs/Wickets) -->
+    <div class="score-card">
+        <div id="runs-label" class="card-badge">runs</div>
+        <div id="wickets-label" class="card-badge">wickets</div>
+        <span id="score">0</span>/<span id="wickets">0</span>
+    </div>
+
+    <!-- Who played what... and the result of that action -->
+    <div class="results">
+        <div>
+            <span class="status-name" id="p1-name">Player 1 played</span>
+            <span class="display-action" id="p1-action"><img src="" alt="{player 1 action}"></span>
+            <span class="display-action" id="p2-action"><img src="" alt="{player 2 action}"></span>
+            <span class="status-name" id="p2-name">Player 2 played</span>
+        bowling
+        </div>
+        <p>The Game Started! Here comes the First Ball</p>
+    </div>
+
+    <!-- Choices for Game Play-->
+    <!-- Row 1 -->
+    <div class="Choices-Row-1">
+        <div class="choice" id="hand1">
+            <img src="../resources/images/hand-with-one-finger.png" alt="1">
+        </div>
+        <div class="choice" id="hand2">
+            <img src="../resources/images/hand-with-two-finger.png" alt="2">
+        </div>
+        <div class="choice" id="hand3">
+            <img src="../resources/images/hand-with-three-finger.png" alt="3">
+        </div>
+    </div>
+    <!-- Row 2 -->
+    <div class="Choices-Row-2">
+        <div class="choice" id="hand4">
+            <img src="../resources/images/hand-with-four-finger.png" alt="4">
+        </div>
+        <div class="choice" id="hand5">
+            <img src="../resources/images/hand-with-five-finger.png" alt="5">
+        </div>
+        <div class="choice" id="hand6">
+            <img src="../resources/images/hand-with-thumb-finger.png" alt="6">
+        </div>
+    </div>
+    <!-- Row 3 -->
+    <div class="Choices-Row-3">
+        <div class="choice" id="hand0">
+            <img src="../resources/images/hand-with-zero-finger.png" alt="0">
+        </div>
+    </div>
+
+    <!-- Display "Make Your Move"-->
+    <p id="action-message">Make your move...</p>
+    
+</body>
+</html>
