@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hand Cricket Game</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <!-- HEADER BAR -->
@@ -22,16 +23,11 @@
 
     <!-- STATUS BAR -->
     <div class="status">
-        <div id="bat" class="status-badge">
-            <img src="../resources/images/cricket-bat.png" alt="Bat image">
-        </div>
-        <div id="ball" class="status-badge">
-            <img src="../resources/images/cricket-ball.png" alt="Ball image">
-        </div>
-        <span class="status-name" id="p1-name">Player 1</span>
-        batting | 
-        <span class="status-name" id="p2-name">Player 2</span>
-        bowling
+        <img src="../resources/images/cricket-bat.png" alt="Bat image" id="img_bat">
+        <span class="status-txt" id="p1-name">Player 1</span>
+        <span class="status-txt" id="status_center_text">batting&nbsp&nbsp|&nbsp&nbspbowling</span>
+        <span class="status-txt" id="p2-name">Player 2</span>
+        <img src="../resources/images/cricket-ball.png" alt="Ball image" id="img_ball">
     </div>
 
     <!-- FULL SCORE BOARD and TARGET RUNS, OVERS(to-do later) or FIRST BAT -->
@@ -44,54 +40,59 @@
         <div id="runs-label" class="card-badge">runs</div>
         <div id="wickets-label" class="card-badge">wickets</div>
         <span id="score">0</span>/<span id="wickets">0</span>
+        <div class="score-card-footer">
+            <p id="overs">Overs: 0.0</p>
+            <p id="target">Target: Nil</p>
+        </div>
+        
     </div>
 
     <!-- Who played what... and the result of that action -->
     <div class="results">
-        <div>
-            <span class="status-name" id="p1-name">Player 1 played</span>
-            <span class="display-action" id="p1-action"><img src="" alt="{player 1 action}"></span>
-            <span class="display-action" id="p2-action"><img src="" alt="{player 2 action}"></span>
-            <span class="status-name" id="p2-name">Player 2 played</span>
-        bowling
+        <div class="results-disp">
+            <span class="result-txt" id="p1-name">Player 1 played</span>
+            <span class="result-img" id="p1-action"><img src="" alt=""></span>
+            <span class="result-txt"> vs </span>
+            <span class="result-img" id="p2-action"><img src="" alt=""></span>
+            <span class="result-txt" id="p2-name">Player 2 played</span>
         </div>
-        <p>The Game Started! Here comes the First Ball</p>
+        <p>The Game Started! Make your first move!</p>
     </div>
 
     <!-- Choices for Game Play-->
     <!-- Row 1 -->
-    <div class="Choices-Row-1">
+    <div class="Choices">
         <div class="choice" id="hand1">
-            <img src="../resources/images/hand-with-one-finger.png" alt="1">
+            <img class="hand" src="../resources/images/hand-with-one-finger.png" alt="1">
         </div>
         <div class="choice" id="hand2">
-            <img src="../resources/images/hand-with-two-finger.png" alt="2">
+            <img class="hand" src="../resources/images/hand-with-two-finger.png" alt="2">
         </div>
         <div class="choice" id="hand3">
-            <img src="../resources/images/hand-with-three-finger.png" alt="3">
+            <img class="hand" src="../resources/images/hand-with-three-finger.png" alt="3">
         </div>
     </div>
     <!-- Row 2 -->
-    <div class="Choices-Row-2">
+    <div class="Choices">
         <div class="choice" id="hand4">
-            <img src="../resources/images/hand-with-four-finger.png" alt="4">
+            <img class="hand" src="../resources/images/hand-with-four-finger.png" alt="4">
         </div>
         <div class="choice" id="hand5">
-            <img src="../resources/images/hand-with-five-finger.png" alt="5">
+            <img class="hand" src="../resources/images/hand-with-five-finger.png" alt="5">
         </div>
         <div class="choice" id="hand6">
-            <img src="../resources/images/hand-with-thumb-finger.png" alt="6">
+            <img class="hand" src="../resources/images/hand-with-thumb-finger.png" alt="6">
         </div>
     </div>
     <!-- Row 3 -->
-    <div class="Choices-Row-3">
+    <div class="Choices">
         <div class="choice" id="hand0">
-            <img src="../resources/images/hand-with-zero-finger.png" alt="0">
+            <img class="hand" src="../resources/images/hand-with-zero-finger.png" alt="0">
         </div>
     </div>
 
     <!-- Display "Make Your Move"-->
-    <p id="action-message">Make your move...</p>
+    <p id="action-message">make your move.</p>
     
 </body>
 </html>
