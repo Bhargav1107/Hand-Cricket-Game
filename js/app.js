@@ -6,15 +6,24 @@
  * version: 1.0.0
  * added app.js with all logical functionality of the game created
  * DOM functionality with changes in texts and visibility wrt to game flow added
+ * 
+ * Date: 06/02/2020
+ * version: 1.0.1
+ * bugs fixed of wickets exceeding 10 wickets even after win
+ * added functionality of disabling and hiding tags on gameOver
+ * added variables maxWicket and maxOvers to remove hard-coded values 
+ * and add dynamic assignment to it in future from index.html
  */
 
 /* caching the DOM */
-var p1name = "Player 1";
-var p2name = "player 2";
+var p1name = "Player 1";    // current batting player
+var p2name = "player 2";    // current balling player
 const p1name_span = document.getElementById("p1-name");
 const p2name_span = document.getElementById("p2-name");
 const p1name_res = document.getElementById("p1-name-res");
 const p2name_res = document.getElementById("p2-name-res");
+const maxWicket = 10;
+const maxOvers = 50.0;
 var runs = 0;
 var wickets = 0;
 const runs_span = document.getElementById("runs");
@@ -80,7 +89,7 @@ function startSecondInnings() {
 function gameOver() {
     /* To-Do */
     results_disp_div.style.visibility = "hidden";
-    if(runs === target) {
+    if(runs >= target) {
         // remember? names swapped!
         result_message_p.innerHTML = p1name+" Won the match!!";
     }
@@ -88,7 +97,14 @@ function gameOver() {
         result_message_p.innerHTML = p2name+" Won the match!!";
     }
 
+    var elements = document.getElementsByClassName("Choices");
+
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].style.visibility = "hidden"; //elements[i].style.display = "none"; 
+    }
     /* To some other page */
+
+    document.getElementById("action-message").style.visibility = "hidden";
 }
 
 function getComputerChoice() {
@@ -194,11 +210,11 @@ function gotOut(p1choice) {
     result_message_p.innerHTML = "OUT!!  "+p1name+" looses a wicket 😢"
 
     /* game flow */    
-    if(inningsCount===1 && wickets === 10) {
+    if(inningsCount===1 && wickets === maxWicket) {
         startSecondInnings();
         inningsCount++;
     }
-    else if(inningsCount===2 && wickets === 10 || inningsCount===2 && runs === target) {
+    else if(inningsCount===2 && wickets === maxWicket || inningsCount===2 && runs >= target) {
         gameOver();
     }
     else {
