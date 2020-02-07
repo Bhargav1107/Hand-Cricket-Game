@@ -11,8 +11,13 @@
  * version: 1.0.1
  * bugs fixed of wickets exceeding 10 wickets even after win
  * added functionality of disabling and hiding tags on gameOver
- * added variables maxWicket and maxOvers to remove hard-coded values 
- * and add dynamic assignment to it in future from index.html
+ * 
+ * Date: 07/02/2020
+ * version: 1.0.1
+ * bug fixed of game not ending even after reaching target by adding checkGameFlow()
+ * bug fixed of wrong increment of run in the second innings
+ * bug fixed of defence (0) incrementing run=run+0 instead of incrementing the oponent hand value 
+ * added alerts for start of game, end of first innings and game over
  */
 
 /* caching the DOM */
@@ -47,7 +52,8 @@ var inningsCount = 1;
 
 
 function startFirstInnings() {
-    
+    alert("Game On!\nAll the best to both the teams.");
+
     target = 0;
     target_p.style.visibility = "hidden";
 
@@ -63,7 +69,8 @@ function startFirstInnings() {
 }
 
 function startSecondInnings() {
-    
+    alert("End of First innings\nswap sides and get ready\nSecond innings begins!");
+
     target = runs + 1;
     target_p.style.visibility = "visible";
     target_p.innerHTML = "Target: "+target;
@@ -87,7 +94,8 @@ function startSecondInnings() {
 }
 
 function gameOver() {
-    /* To-Do */
+    alert("Game Over!");
+
     results_disp_div.style.visibility = "hidden";
     if(runs >= target) {
         // remember? names swapped!
@@ -176,10 +184,10 @@ function updateActionResults(p1choice,p2choice){
     }
 }
 
-function printRuns(run) {
+function printRuns(run,batsman) {
     switch(run) {
         case 0:
-            result_message_p.innerHTML = "a successful defence by "+p1name;
+            result_message_p.innerHTML = "a successful defence by "+batsman;
         break;
         case 1:
             result_message_p.innerHTML = "gets one run";
@@ -202,13 +210,7 @@ function printRuns(run) {
     }
 }
 
-function gotOut(p1choice) {
-    console.log("OUT!!");
-    wickets++;
-    runs_span.innerHTML = runs;
-    wickets_span.innerHTML = wickets;
-    result_message_p.innerHTML = "OUT!!  "+p1name+" looses a wicket 😢"
-
+function checkGameFlow() {
     /* game flow */    
     if(inningsCount===1 && wickets === maxWicket) {
         startSecondInnings();
@@ -222,16 +224,51 @@ function gotOut(p1choice) {
     }
 }
 
-function scoredRun(p1choice, p2choice) {
-    console.log("Scored "+p1choice+" runs!!");
-    runs = runs + p1choice;
+function gotOut(p1choice) {
+    console.log("OUT!!");
+    wickets++;
     runs_span.innerHTML = runs;
     wickets_span.innerHTML = wickets;
-    printRuns(p1choice);
+    result_message_p.innerHTML = "OUT!!  "+p1name+" looses a wicket 😢"
+
+    checkGameFlow();
+}
+
+function scoredRun(p1choice, p2choice) {
+    
+    if(inningsCount===1) {
+        
+        if(p1choice===0){
+            console.log("Scored "+p2choice+" runs!!");
+            runs = runs + p2choice;
+        }
+        else {
+            console.log("Scored "+p1choice+" runs!!");
+            runs = runs + p1choice;
+        }
+        printRuns(p1choice,p1name);
+    }
+    else {
+        
+        if(p2choice===0){
+            console.log("Scored "+p1choice+" runs!!");
+            runs = runs + p1choice;
+        }
+        else {
+            console.log("Scored "+p2choice+" runs!!");
+            runs = runs + p2choice;
+        }
+        printRuns(p2choice,p1name);
+    }
+    runs_span.innerHTML = runs;
+    wickets_span.innerHTML = wickets;
+    
+
+    checkGameFlow();
 }
 
 function game(p1choice) {
-    const p2choice = getComputerChoice()
+    let p2choice = getComputerChoice()
     //const p2choice = getP2Choice() // over the internet
 
     console.log(p1name+" choice = "+p1choice);
